@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Οι Βαρείς – Διαβάστε online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Noto+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf4e8; --panel:#f4e6d0; --line:#e0c9a6; --text:#3b2616; --muted:#7a5d44;
+  --red:#c4611a; --red-d:#7a4a28; --paper:#fffaf1; --glow:rgba(220,130,40,.18);
+  --g1:#ffffff; --g2:#fde8c8; --g3:#f3b772; --g4:#b9794a;
+  --fs:20px;
+}
+:root[data-theme="dark"]{
+  --bg:#1f150e; --panel:#2a1d13; --line:#4a3624; --text:#f1e4d0; --muted:#bfa68a;
+  --red:#f0953f; --red-d:#9a5a2a; --paper:#2d2117; --glow:rgba(240,150,60,.12);
+  --g1:#2a1c11; --g2:#4a2f1a; --g3:#7a4a24; --g4:#a8692f;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Noto Serif",Georgia,serif;line-height:1.6;min-height:100vh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:28px;padding:14px 28px;background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:"GFS Didot",serif;font-size:20px;letter-spacing:.04em;white-space:nowrap}
+.logo b{color:var(--red);font-weight:400}
+.logo svg{width:34px;height:34px;color:var(--red)}
+.nav{display:flex;gap:22px;font-size:15px;color:var(--muted)}
+.nav a:hover,.nav a.on{color:var(--text)}
+.search{margin-left:auto;display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 16px;min-width:260px;background:var(--panel)}
+.search input{background:none;border:0;color:var(--text);font:inherit;font-size:14px;width:100%;outline:0}
+.icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tools{display:flex;gap:12px;color:var(--muted)}
+
+/* layout */
+.wrap{display:grid;grid-template-columns:320px 1fr;min-height:calc(100vh - 67px)}
+.side{padding:26px 24px;border-right:1px solid var(--line);background:var(--panel)}
+.cover{aspect-ratio:2/3;position:relative;display:flex;align-items:flex-end;justify-content:center;border-radius:3px 12px 12px 3px;
+  background:linear-gradient(135deg,#8f5e36,#5a3a22 55%,#3d2615);
+  box-shadow:inset 10px 0 0 rgba(0,0,0,.28),inset 14px 0 14px rgba(255,255,255,.08),10px 14px 26px rgba(70,40,15,.45);
+  animation:float 5s ease-in-out infinite}
+.cover:hover{animation-play-state:paused}
+.cover::before{content:"";position:absolute;inset:16px 14px 16px 26px;border:2px solid #e7b866;border-radius:2px;opacity:.85}
+.cover::after{content:"";position:absolute;top:15%;left:54%;width:48%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle,#ffd29a,#e8892f 60%,#b5601c);box-shadow:0 0 40px 8px rgba(240,150,60,.55);animation:pulse 4s ease-in-out infinite}
+.cover h2{position:relative;z-index:2;font-family:"GFS Didot",serif;font-weight:400;font-size:34px;letter-spacing:.08em;color:#f8dca8;text-align:center;padding:0 0 34px 12px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.side h1{font-family:"GFS Didot",serif;font-weight:400;font-size:24px;margin:20px 0 2px}
+.by{color:var(--muted);font-size:15px}.by a{color:var(--red)}
+.rule{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--red)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.rule i{width:7px;height:7px;background:currentColor;transform:rotate(45deg)}
+.blurb{font-size:15px;color:var(--muted);line-height:1.65}
+.meta{list-style:none;padding:0;margin:20px 0;display:grid;gap:10px;font-size:15px;color:var(--muted)}
+.meta li{display:flex;gap:14px;align-items:center}
+.start{width:100%;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--red-d);color:#fff;padding:13px;border-radius:5px;font-size:16px;transition:background .2s}
+.start:hover{background:var(--red)}
+.side h3{font-family:"GFS Didot",serif;font-weight:400;font-size:19px;margin:28px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.chapters{list-style:none;padding:0;display:grid;gap:2px}
+.chapters button{width:100%;text-align:left;padding:9px 12px;font-size:15px;color:var(--muted);border-left:3px solid transparent;display:flex;gap:10px;align-items:center}
+.chapters button:hover:not(:disabled){color:var(--text)}
+.chapters button.on{color:var(--red);border-left-color:var(--red)}
+.chapters button:disabled{cursor:not-allowed;opacity:.65}
+
+/* reader */
+.main{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--g1) 0%,var(--g2) 30%,var(--g3) 65%,var(--g4) 100%);background-size:300% 300%;animation:drift 20s ease-in-out infinite}
+.embers{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.embers span{position:absolute;bottom:-20px;border-radius:50%;background:radial-gradient(circle,#fff3d6,#f0953f 60%,transparent 70%);opacity:0;animation:rise linear infinite}
+.bar{display:flex;align-items:center;gap:10px;padding:16px 32px;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
+.bar .crumb{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar .tools{margin-left:auto;align-items:center}
+.bar .tools button{padding:4px 8px;font-size:17px}
+.bar .tools button:hover,.bar .tools button.on{color:var(--red)}
+.bar .tools .lang{font-size:13px;font-weight:600;letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+.bar .sep{width:1px;height:22px;background:var(--line)}
+article{position:relative;z-index:1;max-width:760px;margin:40px auto 10px;padding:52px 56px 36px;background:var(--paper);
+  background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(150,100,50,.05) 31px 32px);
+  border-radius:3px 10px 10px 3px;transform-origin:left center;
+  box-shadow:inset 18px 0 22px -14px rgba(90,58,34,.35),1px 0 0 var(--line),4px 3px 0 -1px var(--paper),5px 3px 0 var(--line),8px 6px 0 -1px var(--paper),9px 6px 0 var(--line),14px 18px 40px rgba(60,35,15,.35)}
+article.turn{animation:turn .9s cubic-bezier(.2,.7,.2,1)}
+.orn{display:flex;align-items:center;gap:14px;color:var(--red);margin:0 auto 18px}
+.orn::before,.orn::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--red))}
+.orn::after{background:linear-gradient(270deg,transparent,var(--red))}
+.orn svg{width:34px;height:34px}
+.kicker{text-align:center;font-family:"GFS Didot",serif;color:var(--red);font-size:30px}
+.title{text-align:center;font-family:"GFS Didot",serif;font-weight:400;font-size:38px;line-height:1.25;margin:6px 0 20px}
+.text{font-size:var(--fs);line-height:1.85;margin-top:34px}
+.text p{margin-bottom:1.1em;text-indent:1.6em;text-align:justify;hyphens:auto}
+.text p:first-child{text-indent:0}
+.text p:first-child::first-letter{float:left;font-family:"GFS Didot",serif;color:var(--red);font-size:4.2em;line-height:.8;padding:.08em .12em 0 0}
+.text p.scene{text-indent:0;text-align:center;color:var(--red);letter-spacing:.5em}
+.text p.end{text-indent:0;text-align:center;color:var(--muted);font-style:italic}
+.pager{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:760px;margin:0 auto;padding:10px 28px 60px}
+.pager button{border:1px solid var(--line);border-radius:999px;padding:12px 24px;display:flex;gap:10px;align-items:center;font-size:15px}
+.pager button.next{background:var(--red-d);border-color:var(--red-d);color:#fff}
+.pager button:hover:not(:disabled){border-color:var(--red)}
+.pager button:disabled{opacity:.4;cursor:not-allowed}
+.count{color:var(--muted);font-size:15px;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--red-d);color:#fff;padding:10px 18px;border-radius:6px;font-size:14px;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translateX(-50%)}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .side{border-right:0;border-bottom:1px solid var(--line)}
+  .cover{max-width:240px}
+  .top{gap:14px;padding:12px 16px;flex-wrap:wrap}
+  .nav{display:none}
+  .search{min-width:0;flex:1}
+  .bar{padding:12px 16px}
+  .title{font-size:30px}
+  .pager button span{display:none}
+}
+@keyframes drift{0%,100%{background-position:0 0}50%{background-position:100% 100%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 34px 6px rgba(240,150,60,.45)}50%{box-shadow:0 0 54px 14px rgba(255,170,80,.7)}}
+@keyframes rise{0%{transform:translateY(0) translateX(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-110vh) translateX(40px);opacity:0}}
+@keyframes turn{0%{transform:perspective(1800px) rotateY(-80deg);opacity:.2}100%{transform:perspective(1800px) rotateY(0);opacity:1}}
+@media(max-width:900px){article{padding:34px 22px 26px;margin-top:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="orn" viewBox="0 0 40 40"><path d="M20 2 24 16 38 20 24 24 20 38 16 24 2 20 16 16Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M20 10 22 18 30 20 22 22 20 30 18 22 10 20 18 18Z" fill="currentColor"/></symbol>
+</defs></svg>
+
+<header class="top">
+  <a class="logo" href="#"><svg><use href="#orn"/></svg><span><b>ΑΣΤΡΑΙΑ</b> ΙΣΤΟΡΙΕΣ</span></a>
+  <nav class="nav"><a class="on" href="#">Αρχική</a><a href="#">Βιβλιοθήκη</a><a href="#">Κατηγορίες</a></nav>
+  <label class="search"><input type="search" placeholder="Αναζήτηση ιστοριών…" aria-label="Αναζήτηση"></label>
+  <div class="tools">
+    <button id="themeTop" aria-label="Αλλαγή θέματος"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="side">
+    <div class="cover"><h2>ΟΙ ΒΑΡΕΙΣ</h2></div>
+    <h1>ΟΙ ΒΑΡΕΙΣ</h1>
+    <div class="by">από <a href="#">Το Όνομά Σου</a></div>
+    <div class="rule"><i></i></div>
+    <p class="blurb" id="blurb">Σε μια πόλη πάνω από τη θάλασσα της ομίχλης, ο ήχος σκοτώνει. Μια κοπέλα ακούει στη σιωπή το σήμα του αδερφού της, που χάθηκε πριν από τρία χρόνια.</p>
+    <ul class="meta">
+      <li><svg class="icon" viewBox="0 0 24 24"><path d="M3 5h7a3 3 0 0 1 2 1 3 3 0 0 1 2-1h7v14h-7a3 3 0 0 0-2 1 3 3 0 0 0-2-1H3Z"/></svg>Φαντασία</li>
+      <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></svg>Δράση</li>
+      <li><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/></svg>Μυστήριο</li>
+      <li><svg class="icon" viewBox="0 0 24 24"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>Σε εξέλιξη</li>
+    </ul>
+    <button class="start" id="start"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8Z"/></svg><span id="tStart">Ξεκίνα την ανάγνωση</span></button>
+    <h3 id="hCh">Κεφάλαια</h3>
+    <ul class="chapters" id="chapters"></ul>
+  </aside>
+
+  <main class="main">
+    <div class="embers" id="embers"></div>
+    <div class="bar">
+      <div class="crumb"><a href="#">Αρχική</a>/<span>ΟΙ ΒΑΡΕΙΣ</span>/<span id="crumbCh"></span></div>
+      <div class="tools">
+        <button id="fMinus" aria-label="Μικρότερα γράμματα">Α-</button>
+        <button id="fPlus" aria-label="Μεγαλύτερα γράμματα">Α+</button>
+        <span class="sep"></span>
+        <button id="lang" class="lang" aria-label="Μετάφραση / Translate" title="Μετάφραση / Translate">EN</button>
+        <button id="theme" aria-label="Αλλαγή θέματος"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
+        <button id="mark" aria-label="Σελιδοδείκτης"><svg class="icon" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg></button>
+      </div>
+    </div>
+
+    <article id="reader">
+      <div class="orn"><svg><use href="#orn"/></svg></div>
+      <div class="kicker" id="kicker"></div>
+      <h2 class="title" id="title"></h2>
+      <div class="orn"><svg><use href="#orn"/></svg></div>
+      <div class="text" id="text"></div>
+      <div class="orn" style="margin-top:30px"><svg><use href="#orn"/></svg></div>
+    </article>
+
+    <nav class="pager">
+      <button id="prev"><svg class="icon" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg><span id="tPrev">Προηγούμενο</span></button>
+      <div class="count" id="count"></div>
+      <button class="next" id="next"><span id="tNext">Επόμενο</span><svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+    </nav>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   ΠΩΣ ΠΡΟΣΘΕΤΩ ΝΕΟ ΚΕΦΑΛΑΙΟ;
+   Αντίγραψε ένα αντικείμενο { ... } παρακάτω, άλλαξε τίτλο και κείμενο.
+   Κάθε string στο "text" είναι μία παράγραφος.
+   Το "***" βγάζει διαχωριστικό σκηνής. Βάλε locked:true για κλειδωμένο.
+   ============================================================ */
+const CHAPTERS = [
+  {
+    title: "Η τελευταία καμπάνα",
+    en: { title: "The Last Bell", text: [
+      "In Astraia, they did not fear the dark. They feared sound.",
+      "The city was built on top of a vast rock, above a sea of fog whose floor no one had ever seen. When the sun went down, the bells rang seven times, and then everything fell silent. Children learned sign language before they learned to write. Mothers sang lullabies with a palm resting on the baby’s back. Even the dogs had learned not to bark.",
+      "Because inside the fog slept the Heavies.",
+      "No one had ever seen one whole. Those who had glimpsed even a piece of them, a hand as big as a house, or a foot that wiped out an entire village, never came back to tell of it. They knew only one thing: the Heavies woke at noise. And when they woke, they climbed.",
+      "***",
+      "Iris Kallergi climbed the one hundred and twelve steps of the bell tower barefoot, so that her footsteps would not be heard. She was sixteen, and the assistant of old Minas, the bell-keeper. Her job was simple and terrible: to ring the last bell of the day and hold the rope tight after the seventh stroke, so the sound would die at once. If the bell trembled even once more, someone would pay for it.",
+      "She stood at the top and looked out. The sun sank into the fog as if the sea were swallowing it. Far away, in the distance, something moved. A shadow darker than the rest. Iris did not look at it for long. Minas always told her: “Don’t look at what you can’t bear to see.”",
+      "She took the rope. One. Two. Three. Four. Five. Six. Seven.",
+      "She held on. The bell died in her hands, warm and mute.",
+      "Astraia sank into silence.",
+      "Iris wanted to go down, but something made her stay. Three years ago, her brother Theon had left with the Descenders, the people who went down into the fog on ropes to bring back water and metal. He was the best of them all. He never came back. The city had buried him with an empty coffin and a silence a little longer than the others.",
+      "Then she heard it.",
+      "From somewhere deep in the fog, very far and very faint, came a sound. A metallic tap. Then another. Iris froze, and her blood turned to ice.",
+      "It was not the rhythm of the Heavies. It was a rhythm she knew by heart: two quick, one slow, two quick. The signal Theon used to tap on the wall of their room every night, when they were children and afraid of the dark.",
+      "The sound came again. Closer.",
+      "And, beneath the rock, something enormous began to wake.",
+      "To be continued…"
+    ] },
+    text: [
+      "Στην Αστραία δεν φοβόντουσαν το σκοτάδι. Φοβόντουσαν τον ήχο.",
+      "Η πόλη ήταν χτισμένη στην κορυφή ενός τεράστιου βράχου, πάνω από μια θάλασσα ομίχλης που κανείς δεν είχε δει ποτέ τον πάτο της. Όταν έδυε ο ήλιος, οι καμπάνες χτυπούσαν επτά φορές, και μετά όλα σώπαιναν. Τα παιδιά μάθαιναν τη νοηματική πριν μάθουν να γράφουν. Οι μανάδες νανούριζαν με την παλάμη ακουμπισμένη στην πλάτη του μωρού. Ακόμα και τα σκυλιά είχαν μάθει να μη γαβγίζουν.",
+      "Γιατί μέσα στην ομίχλη κοιμόντουσαν οι Βαρείς.",
+      "Κανείς δεν τους είχε δει ολόκληρους. Όσοι είχαν δει έστω και ένα κομμάτι τους, ένα χέρι μεγάλο σαν σπίτι ή ένα πόδι που έσβηνε ένα ολόκληρο χωριό, δεν είχαν γυρίσει να το διηγηθούν. Ήξεραν μόνο ένα πράγμα: ξυπνούσαν από τον θόρυβο. Και όταν ξυπνούσαν, σκαρφάλωναν.",
+      "***",
+      "Η Ίρις Καλλέργη ανέβαινε τα εκατόν δώδεκα σκαλιά του καμπαναριού με γυμνά πόδια, για να μην ακούγονται τα βήματά της. Ήταν δεκαέξι χρονών και βοηθός του γερο-Μηνά, του καμπανάρη. Η δουλειά της ήταν απλή και φρικτή: να χτυπήσει την τελευταία καμπάνα της ημέρας και να κρατήσει το σχοινί σφιχτά μετά το έβδομο χτύπημα, ώστε ο ήχος να σβήσει αμέσως. Αν η καμπάνα έκανε ούτε μία δόνηση παραπάνω, κάποιος θα πλήρωνε.",
+      "Στάθηκε στην κορυφή και κοίταξε έξω. Ο ήλιος βυθιζόταν στην ομίχλη σαν να τον κατάπινε η θάλασσα. Πολύ μακριά, στο βάθος, κάτι κουνήθηκε. Μια σκιά πιο σκούρα από τις υπόλοιπες. Η Ίρις δεν την κοίταξε πολλή ώρα. Ο Μηνάς της έλεγε πάντα: «Μην κοιτάς όσα δεν μπορείς να αντέξεις να δεις».",
+      "Έπιασε το σχοινί. Ένα. Δύο. Τρία. Τέσσερα. Πέντε. Έξι. Επτά.",
+      "Κράτησε. Η καμπάνα έσβησε στα χέρια της, ζεστή και βουβή.",
+      "Η Αστραία βυθίστηκε στη σιωπή.",
+      "Η Ίρις ήθελε να κατέβει, αλλά κάτι την έκανε να μείνει. Πριν από τρία χρόνια, ο αδερφός της ο Θέων είχε φύγει με τους Κατεβαστές, τους ανθρώπους που κατέβαιναν στην ομίχλη με σχοινιά για να φέρουν νερό και μέταλλο. Ήταν ο καλύτερος από όλους. Δεν γύρισε ποτέ. Η πόλη τον είχε θάψει με ένα άδειο φέρετρο και μια σιωπή λίγο μεγαλύτερη από τις άλλες.",
+      "Τότε το άκουσε.",
+      "Από κάπου βαθιά μέσα στην ομίχλη, πολύ μακριά και πολύ αχνά, ήρθε ένας ήχος. Ένα μεταλλικό χτύπημα. Μετά άλλο ένα. Η Ίρις πάγωσε και το αίμα της έγινε πάγος.",
+      "Δεν ήταν ο ρυθμός των Βαρέων. Ήταν ένας ρυθμός που ήξερε απ' έξω: δύο γρήγορα, ένα αργό, δύο γρήγορα. Το σήμα που της χτυπούσε ο Θέων στον τοίχο του δωματίου τους κάθε βράδυ, όταν ήταν παιδιά και φοβόντουσαν το σκοτάδι.",
+      "Ο ήχος ξαναήρθε. Πιο κοντά.",
+      "Και, κάτω από το βράχο, κάτι τεράστιο άρχισε να ξυπνά.",
+      "Συνεχίζεται…"
+    ]
+  },
+  { title: "Σύντομα", locked: true, en: { title: "Coming soon", text: [] }, text: [] },
+  { title: "Σύντομα", locked: true, en: { title: "Coming soon", text: [] }, text: [] },
+  { title: "Σύντομα", locked: true, text: [] }
+];
+
+const $ = id => document.getElementById(id);
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+let cur = store.get("barys_ch", 0);
+if (!CHAPTERS[cur] || CHAPTERS[cur].locked) cur = 0;
+let fs = store.get("barys_fs", 20);
+let marks = store.get("barys_marks", []);
+let lang = store.get("barys_lang", "el");
+const T = {
+  el:{ch:"Κεφάλαιο",chs:"Κεφάλαια",start:"Ξεκίνα την ανάγνωση",prev:"Προηγούμενο",next:"Επόμενο",soon:"Αυτό το κεφάλαιο έρχεται σύντομα",on:"Ο σελιδοδείκτης αποθηκεύτηκε",off:"Ο σελιδοδείκτης αφαιρέθηκε",book:"Οι Βαρείς",btn:"EN",
+      blurb:"Σε μια πόλη πάνω από τη θάλασσα της ομίχλης, ο ήχος σκοτώνει. Μια κοπέλα ακούει στη σιωπή το σήμα του αδερφού της, που χάθηκε πριν από τρία χρόνια."},
+  en:{ch:"Chapter",chs:"Chapters",start:"Start reading",prev:"Previous",next:"Next",soon:"This chapter is coming soon",on:"Bookmark saved",off:"Bookmark removed",book:"The Heavies",btn:"ΕΛ",
+      blurb:"In a city above a sea of fog, sound kills. In the silence, a girl hears the signal of her brother, who vanished three years ago."}
+};
+const t = () => T[lang];
+const ttl = c => (lang === "en" && c.en) ? c.en.title : c.title;
+
+function toast(msg){ const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(()=>t.classList.remove("show"), 1800); }
+
+function setTheme(t){ document.documentElement.dataset.theme = t; store.set("barys_theme2", t); }
+setTheme(store.get("barys_theme2", "light"));
+const flip = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+$("theme").onclick = flip; $("themeTop").onclick = flip;
+
+function setFs(n){ fs = Math.max(15, Math.min(30, n)); document.documentElement.style.setProperty("--fs", fs + "px"); store.set("barys_fs", fs); }
+setFs(fs);
+$("fMinus").onclick = () => setFs(fs - 2);
+$("fPlus").onclick = () => setFs(fs + 2);
+
+function render(){
+  const ch = CHAPTERS[cur];
+  $("kicker").textContent = t().ch + " " + (cur + 1);
+  $("title").textContent = ttl(ch);
+  $("crumbCh").textContent = t().ch + " " + (cur + 1);
+  $("count").textContent = t().ch + " " + (cur + 1) + " / " + CHAPTERS.length;
+  $("text").innerHTML = "";
+  const body = (lang === "en" && ch.en) ? ch.en.text : ch.text;
+  body.forEach((p, i) => {
+    const el = document.createElement("p");
+    if (p === "***"){ el.className = "scene"; el.textContent = "◆ ◆ ◆"; }
+    else { el.textContent = p; if (i === body.length - 1 && p.endsWith("…")) el.className = "end"; }
+    $("text").appendChild(el);
+  });
+  $("prev").disabled = cur === 0;
+  const nx = CHAPTERS[cur + 1];
+  $("next").disabled = !nx || nx.locked;
+  $("mark").classList.toggle("on", marks.includes(cur));
+  document.title = ttl(ch) + " – " + t().book;
+  document.querySelectorAll("#chapters button").forEach((b, i) => b.classList.toggle("on", i === cur));
+  store.set("barys_ch", cur);
+}
+function turn(){ const a = $("reader"); a.classList.remove("turn"); void a.offsetWidth; a.classList.add("turn"); }
+function go(i){
+  if (!CHAPTERS[i] || CHAPTERS[i].locked){ toast(t().soon); return; }
+  cur = i; render(); turn(); $("reader").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function buildList(){
+  $("chapters").innerHTML = "";
+  CHAPTERS.forEach((c, i) => {
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.innerHTML = (c.locked ? '<svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>' : "") + "<span>" + (i + 1) + ". " + ttl(c) + "</span>";
+    if (c.locked) b.disabled = true;
+    b.onclick = () => go(i);
+    li.appendChild(b); $("chapters").appendChild(li);
+  });
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  $("hCh").textContent = t().chs; $("tStart").textContent = t().start;
+  $("tPrev").textContent = t().prev; $("tNext").textContent = t().next;
+  $("blurb").textContent = t().blurb; $("lang").textContent = t().btn;
+  buildList(); render();
+}
+$("lang").onclick = () => { lang = lang === "el" ? "en" : "el"; store.set("barys_lang", lang); applyLang(); turn(); };
+
+$("prev").onclick = () => go(cur - 1);
+$("next").onclick = () => go(cur + 1);
+$("start").onclick = () => go(0);
+$("mark").onclick = () => {
+  const i = marks.indexOf(cur);
+  if (i >= 0){ marks.splice(i, 1); toast(t().off); }
+  else { marks.push(cur); toast(t().on); }
+  store.set("barys_marks", marks); render();
+};
+for (let i = 0; i < 16; i++){
+  const e = document.createElement("span"), z = 4 + Math.random() * 8;
+  e.style.cssText = "left:" + Math.random() * 100 + "%;width:" + z + "px;height:" + z + "px;animation-duration:" + (9 + Math.random() * 10) + "s;animation-delay:" + (-Math.random() * 15) + "s";
+  $("embers").appendChild(e);
+}
+applyLang(); turn();
+</script>
+</body>
+</html>
