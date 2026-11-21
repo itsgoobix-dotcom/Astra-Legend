@@ -76,7 +76,6 @@ a{color:inherit;text-decoration:none}
 .bar .tools{margin-left:auto;align-items:center}
 .bar .tools button{padding:4px 8px;font-size:17px}
 .bar .tools button:hover,.bar .tools button.on{color:var(--red)}
-.bar .tools .lang{font-size:13px;font-weight:600;letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:3px 12px}
 .bar .sep{width:1px;height:22px;background:var(--line)}
 article{position:relative;z-index:1;max-width:760px;margin:40px auto 10px;padding:52px 56px 36px;background:var(--paper);
   background-image:repeating-linear-gradient(0deg,transparent 0 31px,rgba(150,100,50,.05) 31px 32px);
@@ -165,7 +164,6 @@ article.turn{animation:turn .9s cubic-bezier(.2,.7,.2,1)}
         <button id="fMinus" aria-label="Μικρότερα γράμματα">Α-</button>
         <button id="fPlus" aria-label="Μεγαλύτερα γράμματα">Α+</button>
         <span class="sep"></span>
-        <button id="lang" class="lang" aria-label="Μετάφραση / Translate" title="Μετάφραση / Translate">EN</button>
         <button id="theme" aria-label="Αλλαγή θέματος"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
         <button id="mark" aria-label="Σελιδοδείκτης"><svg class="icon" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4Z"/></svg></button>
       </div>
@@ -173,10 +171,28 @@ article.turn{animation:turn .9s cubic-bezier(.2,.7,.2,1)}
 
     <article id="reader">
       <div class="orn"><svg><use href="#orn"/></svg></div>
-      <div class="kicker" id="kicker"></div>
-      <h2 class="title" id="title"></h2>
+      <div class="kicker" id="kicker">Κεφάλαιο 1</div>
+      <h2 class="title" id="title">Η τελευταία καμπάνα</h2>
       <div class="orn"><svg><use href="#orn"/></svg></div>
-      <div class="text" id="text"></div>
+      <div class="text" id="text">
+<p>Στην Αστραία δεν φοβόντουσαν το σκοτάδι. Φοβόντουσαν τον ήχο.</p>
+<p>Η πόλη ήταν χτισμένη στην κορυφή ενός τεράστιου βράχου, πάνω από μια θάλασσα ομίχλης που κανείς δεν είχε δει ποτέ τον πάτο της. Όταν έδυε ο ήλιος, οι καμπάνες χτυπούσαν επτά φορές, και μετά όλα σώπαιναν. Τα παιδιά μάθαιναν τη νοηματική πριν μάθουν να γράφουν. Οι μανάδες νανούριζαν με την παλάμη ακουμπισμένη στην πλάτη του μωρού. Ακόμα και τα σκυλιά είχαν μάθει να μη γαβγίζουν.</p>
+<p>Γιατί μέσα στην ομίχλη κοιμόντουσαν οι Βαρείς.</p>
+<p>Κανείς δεν τους είχε δει ολόκληρους. Όσοι είχαν δει έστω και ένα κομμάτι τους, ένα χέρι μεγάλο σαν σπίτι ή ένα πόδι που έσβηνε ένα ολόκληρο χωριό, δεν είχαν γυρίσει να το διηγηθούν. Ήξεραν μόνο ένα πράγμα: ξυπνούσαν από τον θόρυβο. Και όταν ξυπνούσαν, σκαρφάλωναν.</p>
+<p class="scene">◆ ◆ ◆</p>
+<p>Η Ίρις Καλλέργη ανέβαινε τα εκατόν δώδεκα σκαλιά του καμπαναριού με γυμνά πόδια, για να μην ακούγονται τα βήματά της. Ήταν δεκαέξι χρονών και βοηθός του γερο-Μηνά, του καμπανάρη. Η δουλειά της ήταν απλή και φρικτή: να χτυπήσει την τελευταία καμπάνα της ημέρας και να κρατήσει το σχοινί σφιχτά μετά το έβδομο χτύπημα, ώστε ο ήχος να σβήσει αμέσως. Αν η καμπάνα έκανε ούτε μία δόνηση παραπάνω, κάποιος θα πλήρωνε.</p>
+<p>Στάθηκε στην κορυφή και κοίταξε έξω. Ο ήλιος βυθιζόταν στην ομίχλη σαν να τον κατάπινε η θάλασσα. Πολύ μακριά, στο βάθος, κάτι κουνήθηκε. Μια σκιά πιο σκούρα από τις υπόλοιπες. Η Ίρις δεν την κοίταξε πολλή ώρα. Ο Μηνάς της έλεγε πάντα: «Μην κοιτάς όσα δεν μπορείς να αντέξεις να δεις».</p>
+<p>Έπιασε το σχοινί. Ένα. Δύο. Τρία. Τέσσερα. Πέντε. Έξι. Επτά.</p>
+<p>Κράτησε. Η καμπάνα έσβησε στα χέρια της, ζεστή και βουβή.</p>
+<p>Η Αστραία βυθίστηκε στη σιωπή.</p>
+<p>Η Ίρις ήθελε να κατέβει, αλλά κάτι την έκανε να μείνει. Πριν από τρία χρόνια, ο αδερφός της ο Θέων είχε φύγει με τους Κατεβαστές, τους ανθρώπους που κατέβαιναν στην ομίχλη με σχοινιά για να φέρουν νερό και μέταλλο. Ήταν ο καλύτερος από όλους. Δεν γύρισε ποτέ. Η πόλη τον είχε θάψει με ένα άδειο φέρετρο και μια σιωπή λίγο μεγαλύτερη από τις άλλες.</p>
+<p>Τότε το άκουσε.</p>
+<p>Από κάπου βαθιά μέσα στην ομίχλη, πολύ μακριά και πολύ αχνά, ήρθε ένας ήχος. Ένα μεταλλικό χτύπημα. Μετά άλλο ένα. Η Ίρις πάγωσε και το αίμα της έγινε πάγος.</p>
+<p>Δεν ήταν ο ρυθμός των Βαρέων. Ήταν ένας ρυθμός που ήξερε απ' έξω: δύο γρήγορα, ένα αργό, δύο γρήγορα. Το σήμα που της χτυπούσε ο Θέων στον τοίχο του δωματίου τους κάθε βράδυ, όταν ήταν παιδιά και φοβόντουσαν το σκοτάδι.</p>
+<p>Ο ήχος ξαναήρθε. Πιο κοντά.</p>
+<p>Και, κάτω από το βράχο, κάτι τεράστιο άρχισε να ξυπνά.</p>
+<p class="end">Συνεχίζεται…</p>
+</div>
       <div class="orn" style="margin-top:30px"><svg><use href="#orn"/></svg></div>
     </article>
 
@@ -190,6 +206,7 @@ article.turn{animation:turn .9s cubic-bezier(.2,.7,.2,1)}
 <div class="toast" id="toast"></div>
 
 <script>
+window.onerror = function(m, src, line){ var d = document.createElement("div"); d.style.cssText = "position:fixed;left:0;right:0;top:0;z-index:99;background:#7a4a28;color:#fff;padding:10px;font:14px sans-serif"; d.textContent = "Σφάλμα: " + m + " (γραμμή " + line + ")"; document.body.appendChild(d); };
 /* ============================================================
    ΠΩΣ ΠΡΟΣΘΕΤΩ ΝΕΟ ΚΕΦΑΛΑΙΟ;
    Αντίγραψε ένα αντικείμενο { ... } παρακάτω, άλλαξε τίτλο και κείμενο.
@@ -199,25 +216,6 @@ article.turn{animation:turn .9s cubic-bezier(.2,.7,.2,1)}
 const CHAPTERS = [
   {
     title: "Η τελευταία καμπάνα",
-    en: { title: "The Last Bell", text: [
-      "In Astraia, they did not fear the dark. They feared sound.",
-      "The city was built on top of a vast rock, above a sea of fog whose floor no one had ever seen. When the sun went down, the bells rang seven times, and then everything fell silent. Children learned sign language before they learned to write. Mothers sang lullabies with a palm resting on the baby’s back. Even the dogs had learned not to bark.",
-      "Because inside the fog slept the Heavies.",
-      "No one had ever seen one whole. Those who had glimpsed even a piece of them, a hand as big as a house, or a foot that wiped out an entire village, never came back to tell of it. They knew only one thing: the Heavies woke at noise. And when they woke, they climbed.",
-      "***",
-      "Iris Kallergi climbed the one hundred and twelve steps of the bell tower barefoot, so that her footsteps would not be heard. She was sixteen, and the assistant of old Minas, the bell-keeper. Her job was simple and terrible: to ring the last bell of the day and hold the rope tight after the seventh stroke, so the sound would die at once. If the bell trembled even once more, someone would pay for it.",
-      "She stood at the top and looked out. The sun sank into the fog as if the sea were swallowing it. Far away, in the distance, something moved. A shadow darker than the rest. Iris did not look at it for long. Minas always told her: “Don’t look at what you can’t bear to see.”",
-      "She took the rope. One. Two. Three. Four. Five. Six. Seven.",
-      "She held on. The bell died in her hands, warm and mute.",
-      "Astraia sank into silence.",
-      "Iris wanted to go down, but something made her stay. Three years ago, her brother Theon had left with the Descenders, the people who went down into the fog on ropes to bring back water and metal. He was the best of them all. He never came back. The city had buried him with an empty coffin and a silence a little longer than the others.",
-      "Then she heard it.",
-      "From somewhere deep in the fog, very far and very faint, came a sound. A metallic tap. Then another. Iris froze, and her blood turned to ice.",
-      "It was not the rhythm of the Heavies. It was a rhythm she knew by heart: two quick, one slow, two quick. The signal Theon used to tap on the wall of their room every night, when they were children and afraid of the dark.",
-      "The sound came again. Closer.",
-      "And, beneath the rock, something enormous began to wake.",
-      "To be continued…"
-    ] },
     text: [
       "Στην Αστραία δεν φοβόντουσαν το σκοτάδι. Φοβόντουσαν τον ήχο.",
       "Η πόλη ήταν χτισμένη στην κορυφή ενός τεράστιου βράχου, πάνω από μια θάλασσα ομίχλης που κανείς δεν είχε δει ποτέ τον πάτο της. Όταν έδυε ο ήλιος, οι καμπάνες χτυπούσαν επτά φορές, και μετά όλα σώπαιναν. Τα παιδιά μάθαιναν τη νοηματική πριν μάθουν να γράφουν. Οι μανάδες νανούριζαν με την παλάμη ακουμπισμένη στην πλάτη του μωρού. Ακόμα και τα σκυλιά είχαν μάθει να μη γαβγίζουν.",
@@ -238,8 +236,8 @@ const CHAPTERS = [
       "Συνεχίζεται…"
     ]
   },
-  { title: "Σύντομα", locked: true, en: { title: "Coming soon", text: [] }, text: [] },
-  { title: "Σύντομα", locked: true, en: { title: "Coming soon", text: [] }, text: [] },
+  { title: "Σύντομα", locked: true, text: [] },
+  { title: "Σύντομα", locked: true, text: [] },
   { title: "Σύντομα", locked: true, text: [] }
 ];
 
@@ -252,9 +250,9 @@ let cur = store.get("barys_ch", 0);
 if (!CHAPTERS[cur] || CHAPTERS[cur].locked) cur = 0;
 let fs = store.get("barys_fs", 20);
 let marks = store.get("barys_marks", []);
-let lang = store.get("barys_lang", "el");
+let lang = "el";
 const T = {
   el:{ch:"Κεφάλαιο",chs:"Κεφάλαια",start:"Ξεκίνα την ανάγνωση",prev:"Προηγούμενο",next:"Επόμενο",soon:"Αυτό το κεφάλαιο έρχεται σύντομα",on:"Ο σελιδοδείκτης αποθηκεύτηκε",off:"Ο σελιδοδείκτης αφαιρέθηκε",book:"Οι Βαρείς",btn:"EN",
       blurb:"Σε μια πόλη πάνω από τη θάλασσα της ομίχλης, ο ήχος σκοτώνει. Μια κοπέλα ακούει στη σιωπή το σήμα του αδερφού της, που χάθηκε πριν από τρία χρόνια."},
   en:{ch:"Chapter",chs:"Chapters",start:"Start reading",prev:"Previous",next:"Next",soon:"This chapter is coming soon",on:"Bookmark saved",off:"Bookmark removed",book:"The Heavies",btn:"ΕΛ",
-      blurb:"In a city above a sea of fog, sound kills. In the silence, 
+      blurb:"In a city above a sea of fog, sound kills. In the
